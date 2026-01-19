@@ -18,7 +18,7 @@ app.set("trust proxy", 1);
 app.use(express.json());
 app.use(
   cors({
-    origin: true,
+    origin: process.env.CLIENT_URL,
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
@@ -28,7 +28,7 @@ app.use(
 // Socket.IO
 const io = require("socket.io")(server, {
   cors: {
-    origin: true,
+    origin: process.env.CLIENT_URL,
     methods: ["GET", "POST"],
     credentials: true,
   },
