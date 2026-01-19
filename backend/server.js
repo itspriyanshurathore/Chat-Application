@@ -11,31 +11,37 @@ const messageRouter = require("./routes/messageRoutes");
 const app = express();
 const server = http.createServer(app);
 
+// Trust Render proxy
+app.set("trust proxy", 1);
+
+// Middleware
 app.use(express.json());
 app.use(
   cors({
-    origin: "http://localhost:5173", 
-    credentials: true, // 👈 allow cookies
+    origin: true,
+    credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
-  })
+  }),
 );
 
+// Socket.IO
 const io = require("socket.io")(server, {
   cors: {
-    origin: ["http://localhost:5173"],
+    origin: true,
     methods: ["GET", "POST"],
+    credentials: true,
   },
 });
 
-// Socket setup
+// Socket logic
 require("./socket")(io);
 
 // MongoDB
 mongoose
   .connect(process.env.MONGO_URL)
   .then(() => console.log("MongoDB connected"))
-  .catch((err) => console.error(err));
+  .catch((err) => console.error("Mongo error:", err));
 
 // Routes
 app.use("/api/users", userRouter);

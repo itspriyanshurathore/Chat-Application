@@ -15,8 +15,9 @@ import { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import io from "socket.io-client";
 import UsersList from "./UsersList";
+import API_BASE_URL from "../Services/api";
 
-const ENDPOINT = "http://localhost:3000";
+const ENDPOINT = `${API_BASE_URL}`;
 let socket;
 
 const ChatArea = ({ selectedGroup }) => {

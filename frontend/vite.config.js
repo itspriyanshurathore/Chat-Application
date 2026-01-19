@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "http://localhost:3000", // 👈 MUST match backend
+        target: "https://chat-application-01rr.onrender.com/api/users", // 👈 MUST match backend
         changeOrigin: true,
         secure: false,
       },

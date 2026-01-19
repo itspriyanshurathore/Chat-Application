@@ -24,6 +24,8 @@ import { FiPlus, FiEdit, FiTrash2, FiLogOut } from "react-icons/fi";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
+import API_BASE_URL from "../Services/api";
+
 
 function Sidebar({ setSelectedGroup }) {
   const [groups, setGroups] = useState([]);
@@ -53,7 +55,7 @@ function Sidebar({ setSelectedGroup }) {
   /* ================= FETCH GROUPS ================= */
   const fetchGroups = async () => {
     try {
-      const endpoint = "/api/groups";
+      const endpoint = `${API_BASE_URL}/api/groups`;
       const res = await fetch(endpoint, {
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -73,7 +75,7 @@ function Sidebar({ setSelectedGroup }) {
 
   /* ================= ACTIONS ================= */
   const createGroup = async () => {
-    await fetch("/api/groups/create", {
+    await fetch(`${API_BASE_URL}/api/groups/create`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -92,7 +94,7 @@ function Sidebar({ setSelectedGroup }) {
   const updateGroup = async () => {
     if (!editingGroup) return;
 
-    await fetch(`/api/groups/${editingGroup._id}`, {
+    await fetch(`${API_BASE_URL}/api/groups/${editingGroup._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -109,7 +111,7 @@ function Sidebar({ setSelectedGroup }) {
   const deleteGroup = async (groupId) => {
     if (!window.confirm("Delete this group?")) return;
 
-    await fetch(`/api/groups/${groupId}`, {
+    await fetch(`${API_BASE_URL}/api/groups/${groupId}`, {
       method: "DELETE",
       headers: { Authorization: `Bearer ${token}` },
     });
@@ -119,7 +121,7 @@ function Sidebar({ setSelectedGroup }) {
   };
 
   const joinGroup = async (groupId) => {
-    await fetch(`/api/groups/${groupId}/join`, {
+    await fetch(`${API_BASE_URL}/api/groups/${groupId}/join`, {
       method: "POST",
       headers: { Authorization: `Bearer ${token}` },
     });
@@ -129,7 +131,7 @@ function Sidebar({ setSelectedGroup }) {
   };
 
   const leaveGroup = async (groupId) => {
-    await fetch(`/api/groups/${groupId}/leave`, {
+    await fetch(`${API_BASE_URL}/api/groups/${groupId}/leave`, {
       method: "POST",
       headers: { Authorization: `Bearer ${token}` },
     });

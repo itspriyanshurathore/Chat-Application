@@ -12,6 +12,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FiUserPlus } from "react-icons/fi";
 import { useState } from "react";
 import axios from "axios";
+import API_BASE_URL from "../Services/api";
 
 // axios global config
 axios.defaults.withCredentials = true;
@@ -43,7 +44,7 @@ const Register = () => {
 
     try {
       await axios.post(
-        "http://localhost:3000/api/users/register",
+        `${API_BASE_URL}/api/users/api/users/register`,
         { username, email, password },
         { withCredentials: true }
       );

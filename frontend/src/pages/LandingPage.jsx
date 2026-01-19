@@ -12,7 +12,6 @@ import {
   VStack,
   HStack,
   Badge,
-  Input,
 } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 import {
@@ -20,14 +19,13 @@ import {
   FiUsers,
   FiLock,
   FiLogIn,
-  FiLogOut,
   FiUserPlus,
   FiGlobe,
   FiActivity,
-  FiCheckCircle,
   FiUserCheck,
 } from "react-icons/fi";
 
+// eslint-disable-next-line react/prop-types
 const Feature = ({ title, text, icon, badges = [] }) => {
   return (
     <Stack
@@ -77,6 +75,7 @@ const Feature = ({ title, text, icon, badges = [] }) => {
   );
 };
 
+// eslint-disable-next-line react/prop-types
 const ChatMessage = ({ message, sender, time, isUser }) => {
   return (
     <Flex justify={isUser ? "flex-end" : "flex-start"} w="100%">
@@ -135,11 +134,11 @@ export default function LandingPage() {
                   zIndex: -1,
                 }}
               >
-                MasynTech
+                Groupify - Chat App
               </Text>
               <br />
               <Text as="span" color="blue.400">
-                Chat App
+                Join Start freely
               </Text>
             </Heading>
             <Text color="gray.500" fontSize="xl">
@@ -216,7 +215,7 @@ export default function LandingPage() {
                 <HStack justify="space-between">
                   <HStack>
                     <Icon as={FiUsers} />
-                    <Text fontWeight="bold">Team MasynTech</Text>
+                    <Text fontWeight="bold">Groupify</Text>
                   </HStack>
                   <HStack spacing={4}>
                     <Badge colorScheme="green" variant="solid">

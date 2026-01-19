@@ -12,6 +12,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FiLogIn } from "react-icons/fi";
 import { useState } from "react";
 import axios from "axios";
+import API_BASE_URL from "../Services/api";
 
 // axios global config (recommended)
 axios.defaults.withCredentials = true;
@@ -30,7 +31,7 @@ const Login = () => {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:3000/api/users/login", // ✅ correct port
+        `${API_BASE_URL}/api/users/login`, // ✅ correct port
         { email, password },
         { withCredentials: true }
       );
