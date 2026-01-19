@@ -44,7 +44,7 @@ const Register = () => {
 
     try {
       await axios.post(
-        `${API_BASE_URL}/api/users/api/users/register`,
+        `${API_BASE_URL}/api/users/register`,
         { username, email, password },
         { withCredentials: true }
       );
